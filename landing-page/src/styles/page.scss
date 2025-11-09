@@ -1,0 +1,382 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+* { font-family: "Montserrat"; }
+
+.wrapper, .content { @include flex-center(column) }
+
+.content { max-width: 90rem; }
+
+.header {
+  @include flex-between;
+  width: 100%;
+  padding: 1rem;
+  text-transform: uppercase;
+
+  .logo { @include flex(row, flex-start, center); }
+
+  .navigation {
+    @include flex(row, center, center, 6rem);
+    display: none;
+
+    .list {
+      @include flex(row, flex-start, center, 2rem);
+      cursor: pointer;
+    }
+
+    .contact { @include button-base($primary-color); }
+  }
+
+  .burger {
+    @include flex(column, center, center, 0.5rem);
+    width: 2rem;
+    height: 2rem;
+
+    .stroke {
+      width: 100%;
+      height: 0.1rem;
+      border-radius: 2rem;
+      background-color: $text-secondary;
+    }
+  }
+}
+
+
+.intro {
+  @include flex-center(column, 2rem);
+  background: linear-gradient(rgba(0, 0, 0, 0.325)), url(../../public/1-blue-chicago-pawelgaul.jpg);
+  background-size: cover;
+  width: 100%;
+  padding: $small-padding;
+  height: 90vh;
+  color: $text-primary;
+
+  .title { @include text-center(2rem, bold); }
+
+  .description { @include text-center(); }
+
+  .group-button {
+    @include flex-center(row, 2rem);
+    text-transform: uppercase;
+
+  .group-button, .description, .title { flex-wrap: wrap; }
+
+    .primary {
+      @include button-base($button-primary);
+      @include hover-bg($hover-button-primary);
+    }
+
+    .secondary {
+      @include button-base(transparent);
+      border: solid 1px $text-primary;
+      @include hover-bg($text-primary);
+      &:hover { color: $text-secondary; }
+    }
+  }
+}
+
+.quadruple-column {
+  @include grid-cols(1);
+  padding: 4rem;
+
+  .column {
+    @include flex-center(column, 1rem);
+    cursor: pointer;
+    transition: all 0.5s ease;
+    border: solid 1px rgb(208, 228, 255);
+    background-color: #f9fcff;
+    padding: $small-padding;
+    border-radius: 0.3rem;
+    max-width: 15rem;
+    color: $secondary-color;
+    text-align: center;
+
+    .title {
+      font-size: $small-title;
+      font-weight: bold;
+    }
+
+    .icon path {
+      fill: rgb(149, 195, 255);
+      transition: fill 0.5s ease;
+    }
+
+    &:hover {
+      border-color: transparent;
+      color: $text-primary;
+      background-color: $primary-color;
+      box-shadow: 0 40px 60px $primary-color;
+      scale: 1.05;
+
+      .icon path { fill: $text-primary; }
+    }
+  }
+}
+
+.strategy {
+  @include flex-center(row, 2rem);
+  flex-wrap: wrap;
+  padding: 4rem 2rem;
+  background-color: $secondary-color;
+  color: $text-primary;
+
+  .title {
+    @include text-center(1.5rem);
+    max-width: 14rem;
+    flex-wrap: wrap;
+  }
+
+  .calcul {
+    font-size: 6rem;
+    color: $button-primary;
+  }
+}
+
+.how-work {
+  @include flex-center(column, 6rem);
+  padding: 6rem 1rem;
+
+  .title { 
+        font-size: 3rem; 
+        text-align: center
+    }
+
+  .steps-container {
+    @include flex-center(column, 6rem);
+    width: 100%;
+    
+
+    .step-container {
+      @include flex(column, space-between, center, 4rem);
+      width: 100%;
+
+      .item-text {
+        @include flex(column, flex-start, flex-start, 2rem);
+
+        .title { 
+            font-size: $small-title;
+            font-weight: bold; 
+        }
+
+        .description { line-height: 1.5rem; }
+
+        .list {
+          @include flex(column, flex-start, flex-start, 1rem);
+
+          .point { list-style-type: disc; }
+        }
+      }
+    }
+
+    .item-image { @include responsive-img();
+     }
+  }
+}
+
+.source-co {
+  @include flex-center(column, 2rem);
+  background-color: $secondary-color;
+  padding: 4rem 2rem;
+  color: $text-primary;
+  text-align: center;
+
+  .title {
+    font-size: $small-title;
+    font-weight: bold;
+  }
+}
+
+.testimonial {
+  @include flex-center(column, 2rem);
+  padding: $small-padding;
+
+  .title {
+    font-size: $small-title;
+    font-weight: bold;
+  }
+
+  .testimonial-picture { @include responsive-img(20rem); }
+
+  .container-testimonial {
+    @include flex-center(column, 6rem);
+
+    .quote {
+      @include flex-center(column, 2rem);
+      max-width: 40rem;
+
+      .citation-picture { width: 5rem; }
+
+      .author {
+        @include flex(column, flex-start, flex-start, 0.5rem);
+
+        .arrows {
+          @include flex(row, flex-start, center, 1rem);
+          margin-top: 1rem;
+        }
+      }
+
+      .text { max-width: 75%; }
+    }
+  }
+}
+
+.cta {
+  @include flex-center(column, 2rem);
+  padding: $small-padding;
+  max-width: 70rem;
+  border-radius: 2rem;
+  background-color: $secondary-color;
+  color: $text-primary;
+  overflow: hidden;
+  position: relative;
+  z-index: -3;
+
+  .circle-top-right,
+  .circle-bottom-left {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+    position: absolute;
+    background-color: #b2b5c4;
+    z-index: -1;
+  }
+
+  .circle-top-right {
+    @include circle-position(top, right, -3rem, -3rem);
+  }
+  
+  .circle-bottom-left {
+    @include circle-position(bottom, left, -3rem, -3rem);
+  }
+
+  .title {
+    font-size: $small-title;
+    font-weight: bold;
+  }
+
+  .group-button {
+    @include flex-center(row, 2rem);
+    flex-wrap: wrap;
+    text-transform: uppercase;
+
+    .primary {
+      @include button-base($button-primary);
+      @include hover-bg($hover-button-primary);
+    }
+
+    .secondary {
+      @include button-base(transparent);
+      border: solid 1px $text-primary;
+      @include hover-bg($text-primary);
+      &:hover {
+        color: $text-secondary;
+      }
+    }
+  }
+}
+
+.footer {
+  @include flex-center(column);
+  color: $text-primary;
+  width: 100%;
+  max-width: 90rem;
+  margin-top: 5rem;
+
+  .list-items {
+    @include flex(column, flex-start, flex-start, 0.5rem);
+    cursor: pointer;
+  }
+
+  .footer-top {
+    @include grid-cols(1, 2rem);
+    background-color: #4a58d1;
+    padding: $small-padding;
+    width: 100%;
+
+    .title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .links,
+    .socials,
+    .works,
+    .contact-us { @include flex(column, flex-start, flex-start, 1rem); }
+
+    .socials-links { @include flex(row, flex-start, center, 1rem); }
+
+    .link {
+        &:hover { text-decoration: underline; }
+      }
+  }
+
+  .footer-bottom {
+    @include flex(row, space-between, center, 1rem, wrap);
+    background-color: $secondary-color;
+    padding: $small-padding;
+    width: 100%;
+  }
+}
+
+@include breakpoint(1024px) {
+  .how-work {
+    .steps-container {
+      padding: 4rem;
+
+      .step-container { @include flex(row, space-around, center, 4rem, nowrap); }
+
+      .item-image {
+        min-width: 25rem;
+        width: 25rem;
+      }
+    }
+  }
+
+  .testimonial {
+    .container-testimonial {
+      @include flex(row, flex-start, flex-start);
+      align-items: start;
+      padding: 4rem;
+
+      .quote { align-items: start; }
+    }
+  }
+
+  .footer-top, .source-co, .cta { padding: 6rem; }
+  .strategy { padding: 4rem 6rem; }
+
+  .circle-top-right { @include circle-position(top, right, -10rem, -10rem); }
+  .circle-bottom-left { @include circle-position(bottom, left, -10rem, -10rem); }
+  .circle-bottom-left, .circle-top-right { width: 25rem; height: 25rem; }
+
+  .header {
+    @include flex(row, space-around, center);
+
+    .navigation { display: flex; }
+    .burger { display: none; }
+  }
+
+  .footer { .footer-top { @include grid-cols(4); } }
+  .quadruple-column { @include grid-cols(4); }
+}
+
+@include breakpoint-range(768px, 1024px) {
+  .item-text { max-width: 45%; }
+
+  .intro {
+    .title { max-width: 50%; }
+    .description { max-width: 60%; }
+  }
+
+  .footer { .footer-top { @include grid-cols(2); } }
+  .quadruple-column { @include grid-cols(2); }
+
+  .item-image { max-width: 25rem; width: 15rem; }
+
+  .how-work {
+    .steps-container { 
+        .item-image { width: 20rem; } 
+    }
+  }
+}

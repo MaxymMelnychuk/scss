@@ -1,0 +1,82 @@
+@mixin flex($direction: row, $justify: center, $align: center, $gap: 6rem, $wrap: wrap) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+    flex-wrap: $wrap;
+  }
+  
+  @mixin flex-center($direction: row, $gap: 0) {
+    @include flex($direction, center, center, $gap);
+  }
+  
+  @mixin flex-between($direction: row, $gap: 0) {
+    @include flex($direction, space-between, center, $gap);
+  }
+  
+  @mixin button-base($bg, $color: white, $padding: 1rem 2rem) {
+    background-color: $bg;
+    color: $color;
+    padding: $padding;
+    border-radius: 0.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  
+    &:hover { filter: brightness(0.9); }
+  }
+  
+  @mixin grid-cols($count: 1, $gap: 1rem) {
+    display: grid;
+    grid-template-columns: repeat($count, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+  }
+  
+  @mixin responsive-img($max: 100%) {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: $max;
+  }
+  
+  @mixin text-center($size: 1rem, $weight: normal) {
+    text-align: center;
+    font-size: $size;
+    font-weight: $weight;
+  }
+  
+  @mixin hover-bg($color) {
+    transition: background-color 0.5s ease, color 0.5s ease;
+    &:hover {
+      background-color: $color;
+    }
+  }
+  
+  @mixin circle-position($vertical, $horizontal, $vertical-offset: -10rem, $horizontal-offset: -10rem) {
+    position: absolute;
+    #{$vertical}: $vertical-offset;
+    #{$horizontal}: $horizontal-offset;
+  }
+  
+  @mixin bg-cover($url, $overlay: rgba(0, 0, 0, 0.3)) {
+    background: linear-gradient($overlay, $overlay), url($url);
+    background-size: cover;
+    background-position: center;
+  }
+
+  @mixin breakpoint($width) {
+    @media (min-width: $width) {
+      @content;
+    }
+  }
+  
+  @mixin breakpoint-range($min, $max) {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
