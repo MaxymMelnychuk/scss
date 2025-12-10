@@ -26,3 +26,6 @@ Ce projet est une landing page réalisée en cours, utilisant **destyle.css**, *
 ```bash
    npm run dev
 ```
+5. **Ouvrir le projet dans le navigateur** 
+Rendez-vous sur l’URL indiquée dans le terminal, généralement :
+http://localhost:5173
