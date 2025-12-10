@@ -8,12 +8,12 @@ Ce projet est une landing page réalisée en cours, utilisant **destyle.css**, *
 
 1. **Cloner le projet**
    ```bash
-   git clone <url-du-projet>
+   git clone https://github.com/MaxymMelnychuk/scss.git
    ```
 2. **Se déplacer dans le dossier**
 
 ```bash
-   cd <landing-page>
+   cd landing-page
 ```
 
 3. **Installer les dépendances**
